@@ -1,0 +1,28 @@
+group 'rpn'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+application {
+    mainClassName = 'rpn.Application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation platform('org.junit:junit-bom:5.3.2')
+
+    testImplementation('org.junit.jupiter:junit-jupiter-api')
+    testImplementation('org.junit.jupiter:junit-jupiter-params')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine')
+}
