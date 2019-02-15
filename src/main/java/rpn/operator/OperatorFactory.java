@@ -13,7 +13,8 @@ public class OperatorFactory {
             "/", Div::new,
             "sqrt", Sqrt::new,
             "clear", Clear::new,
-            "undo", Undo::new
+            "undo", Undo::new,
+            "noop", NoOp::new
     );
 
     public static Operator getOperator(String operator) {

@@ -1,6 +1,7 @@
 package rpn.operator;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Stack;
 
 public class Undo extends Operator {
@@ -10,7 +11,15 @@ public class Undo extends Operator {
     }
 
     @Override
-    public void evalInternal(Stack<BigDecimal> stack) {
-        stack.pop();
+    public void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList) {
+        if (!operationList.isEmpty()) {
+            Operator op = operationList.remove(operationList.size()-1);
+            op.undo(stack);
+        }
     }
+
+    @Override
+    protected void undo(Stack<BigDecimal> stack) {}
+
+
 }

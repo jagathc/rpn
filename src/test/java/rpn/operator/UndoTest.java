@@ -19,7 +19,7 @@ class UndoTest {
         stack.push(new BigDecimal(BigInteger.ONE));
         stack.push(new BigDecimal(BigInteger.TEN));
 
-        op.evaluate(stack);
+        op.evaluate(stack, null);
 
         assertEquals(stack.size(), 1);
         assertEquals(new BigDecimal(BigInteger.ONE), stack.pop());
@@ -29,6 +29,6 @@ class UndoTest {
     void shouldThrowExceptionIfNotEnoughOperands() {
         Stack<BigDecimal> stack = new Stack<>();
 
-        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack));
+        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack, null));
     }
 }

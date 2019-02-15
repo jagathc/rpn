@@ -19,7 +19,7 @@ class SubTest {
         stack.push(BigDecimal.ONE);
         stack.push(BigDecimal.TEN);
 
-        op.evaluate(stack);
+        op.evaluate(stack, null);
 
         assertEquals(stack.size(), 1);
         assertEquals(stack.pop(), new BigDecimal("-9"));
@@ -30,6 +30,6 @@ class SubTest {
         Stack<BigDecimal> stack = new Stack<>();
         stack.push(BigDecimal.ONE);
 
-        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack));
+        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack, null));
     }
 }

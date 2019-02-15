@@ -18,10 +18,10 @@ class ClearTest {
         stack.push(BigDecimal.ONE);
         stack.push(BigDecimal.TEN);
 
-        op.evaluate(stack);
+        op.evaluate(stack, null);
         assertEquals(stack.size(), 0);
 
-        op.evaluate(stack);
+        op.evaluate(stack, null);
         assertEquals(stack.size(), 0);
     }
 }

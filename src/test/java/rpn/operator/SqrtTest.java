@@ -17,7 +17,7 @@ class SqrtTest {
         Stack<BigDecimal> stack = new Stack<>();
         stack.push(new BigDecimal("2"));
 
-        op.evaluate(stack);
+        op.evaluate(stack,null);
 
         assertEquals(stack.size(), 1);
         assertEquals(
@@ -30,6 +30,6 @@ class SqrtTest {
     void shouldThrowExceptionIfNotEnoughOperands() {
         Stack<BigDecimal> stack = new Stack<>();
 
-        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack));
+        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack, null));
     }
 }

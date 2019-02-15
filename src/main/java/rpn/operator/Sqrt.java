@@ -2,6 +2,7 @@ package rpn.operator;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.List;
 import java.util.Stack;
 
 
@@ -12,7 +13,15 @@ public class Sqrt extends Operator {
     }
 
     @Override
-    public void evalInternal(Stack<BigDecimal> stack) {
-        stack.push(stack.pop().sqrt(MathContext.DECIMAL64));
+    protected void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList) {
+        operand = stack.pop();
+        stack.push(operand.sqrt(MathContext.DECIMAL64));
+        if (operationList != null ) operationList.add(this);
+    }
+
+    @Override
+    protected void undo(Stack<BigDecimal> stack) {
+        stack.pop();
+        stack.push(operand);
     }
 }

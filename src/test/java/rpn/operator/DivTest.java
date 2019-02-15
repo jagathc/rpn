@@ -18,7 +18,7 @@ class DivTest {
         stack.push(BigDecimal.ONE);
         stack.push(BigDecimal.TEN);
 
-        op.evaluate(stack);
+        op.evaluate(stack, null);
 
         assertEquals(stack.size(), 1);
         assertEquals(new BigDecimal("0.1").setScale(10, RoundingMode.HALF_UP),
@@ -30,7 +30,7 @@ class DivTest {
         Stack<BigDecimal> stack = new Stack<>();
         stack.push(BigDecimal.ONE);
 
-        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack));
+        assertThrows(InsuffecientOperandsException.class, () -> op.evaluate(stack, null));
     }
 
     @Test
@@ -39,6 +39,6 @@ class DivTest {
         stack.push(BigDecimal.ONE);
         stack.push(BigDecimal.ZERO);
 
-        assertThrows(ArithmeticException.class, () -> op.evaluate(stack));
+        assertThrows(ArithmeticException.class, () -> op.evaluate(stack, null));
     }
 }
