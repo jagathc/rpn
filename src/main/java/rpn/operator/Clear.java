@@ -1,8 +1,6 @@
 package rpn.operator;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 public class Clear extends Operator {
@@ -12,9 +10,9 @@ public class Clear extends Operator {
     }
 
     @Override
-    protected void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList) {
+    protected void evalInternal(Stack<BigDecimal> stack, Stack<Operator> operatorStack) {
         stack.clear();
-        operationList = new ArrayList<>();
+        operatorStack.clear();
     }
 
     @Override

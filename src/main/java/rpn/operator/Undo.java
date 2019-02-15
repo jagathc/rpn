@@ -11,11 +11,9 @@ public class Undo extends Operator {
     }
 
     @Override
-    public void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList) {
-        if (!operationList.isEmpty()) {
-            Operator op = operationList.remove(operationList.size()-1);
-            op.undo(stack);
-        }
+    public void evalInternal(Stack<BigDecimal> stack, Stack<Operator> operatorStack) {
+        Operator op = operatorStack.pop();
+        op.undo(stack);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package rpn.operator;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Stack;
 
 
@@ -12,12 +11,12 @@ public class Sub extends Operator {
     }
 
     @Override
-    public void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList) {
+    public void evalInternal(Stack<BigDecimal> stack, Stack<Operator> operatorStack) {
         var second = stack.pop();
         var first = stack.pop();
         operand = second;
         stack.push(first.subtract(second));
-        if (operationList != null ) operationList.add(this);
+        if (operatorStack != null ) operatorStack.push(this);
     }
 
     @Override

@@ -3,7 +3,6 @@ package rpn.operator;
 import rpn.exception.InsuffecientOperandsException;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Stack;
 
 public abstract class Operator {
@@ -15,9 +14,9 @@ public abstract class Operator {
         this.operandCount = operandCount;
     }
 
-    public void evaluate(Stack<BigDecimal> stack, List<Operator> operationList) {
+    public void evaluate(Stack<BigDecimal> stack, Stack<Operator> operatorStack) {
         assertOperandCount(stack);
-        evalInternal(stack, operationList);
+        evalInternal(stack, operatorStack);
     }
 
     private void assertOperandCount(Stack<BigDecimal> stack) {
@@ -26,7 +25,7 @@ public abstract class Operator {
         }
     }
 
-    protected abstract void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList);
+    protected abstract void evalInternal(Stack<BigDecimal> stack, Stack<Operator> operatorStack);
 
     protected abstract void undo(Stack<BigDecimal> stack);
 }

@@ -1,7 +1,6 @@
 package rpn.operator;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Stack;
 
 
@@ -12,10 +11,10 @@ public class Add extends Operator {
     }
 
     @Override
-    public void evalInternal(Stack<BigDecimal> stack, List<Operator> operationList) {
+    public void evalInternal(Stack<BigDecimal> stack, Stack<Operator> operatorStack) {
         operand = stack.pop();
         stack.push(operand.add(stack.pop()));
-        if (operationList != null ) operationList.add(this);
+        if (operatorStack != null ) operatorStack.push(this);
     }
 
     @Override

@@ -9,7 +9,6 @@ import rpn.util.StringTokenizer;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
@@ -19,7 +18,7 @@ import static rpn.util.Scale.DISPLAY_SCALE;
 
 public class Calculator {
     private Stack<BigDecimal> stack = new Stack<>();
-    private List<Operator> operationList = new ArrayList<>();
+    private Stack<Operator> operatorStack = new Stack<>();
 
     public void processInput(String input) {
         var tokenizer = new StringTokenizer(input);
@@ -31,12 +30,12 @@ public class Calculator {
                         var number = new BigDecimal(token.getValue()).setScale(CALCULATION_SCALE.scale, HALF_UP);
                         stack.push(number);
                         Operator operator = OperatorFactory.getOperator("noop");
-                        operator.evaluate(stack,operationList);
+                        operator.evaluate(stack, operatorStack);
                     } catch (NumberFormatException ex) {
 
                         try {
                             Operator operator = OperatorFactory.getOperator(token.getValue());
-                            operator.evaluate(stack,operationList);
+                            operator.evaluate(stack, operatorStack);
                         } catch (InsuffecientOperandsException e) {
 
                             throw new CalculationFailedException(
